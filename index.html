@@ -615,10 +615,10 @@
             //��������ĵ�һ����textarea����Ϊ������ֻ��˵�ʱ��ֻ����ʾһ�������֣�
             //ֻ����չ:input�������ֻ����ʾһ�У������Զ����У�Ŀǰ��������û�з��ֺõİ취����������textarea�����½ǵ�С����ͨ��resize:none ȥ����
             $('.post-header').after(
-            '<span class="description" value="���������룬Ȼ�� Enter ���Ķ�" style="font-style: oblique;font-weight: bold;border: none;display: block;'+
+            '<span class="description" value="Please enter the password. Press enter to continue." style="font-style: oblique;font-weight: bold;border: none;display: block;'+
             'width: 60%;margin: 0 auto;text-align: center;outline: none;margin-bottom: 40px;resize:none ">'+
             '<i class="fa fa-heartbeat" id="myheartbeat"></i>'+
-            '���������룬Ȼ�� Enter ���Ķ�' +
+            'Please enter the password. Press enter to continue.' +
             '<i class="fa fa-heartbeat" id="myheartbeat"></i>'+
             '</span>' +
             '<div class="qiang" style="height: 100px;width: 60%;margin:0 auto">' +
@@ -673,7 +673,7 @@
                         $(".post-body").css({opacity:1});
                         $(".pagination").css({opacity:1});
                     }else {
-                        alert("�Բ��������������")
+                        alert("Wrong password.")
                     }
                 }
                 //��document��keyup�Ƴ�����ֹ��pjax������»��ظ����¼�
