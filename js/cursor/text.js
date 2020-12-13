@@ -1,13 +1,13 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
   $("body").click(function(e) {
-    var a = new Array("喜欢我", "不喜欢我");
+    var a = new Array("��ʹ��ָ","�������","�������","���ܳƵ�","С��ά��","��������","��ɽ����","�������","ʮ��ɽ·","��Ȼ����");
     var $i = $("<span/>").text(a[a_idx]);
     var x = e.pageX,
     y = e.pageY;
     $i.css({
       "z-index": 99999,
-      "top": y - 28,
+      "top": y - 48,
       "left": x - a[a_idx].length * 8,
       "position": "absolute",
       "color": "#ff7a45"
