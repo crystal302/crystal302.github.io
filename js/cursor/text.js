@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
     }, 1500, function() {
       $i.remove();
     });
-    a_idx = (a_idx + 1) % a.length;
+a_idx=a_idx+1;
+if (a_idx==a.length) a_idx=13;
   });
 });
