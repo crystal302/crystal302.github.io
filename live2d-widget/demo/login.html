@@ -200,6 +200,7 @@ window.addEventListener("load", () => {
 	function loadRandModel() {
 		const modelId = localStorage.getItem("modelId"),
 			modelTexturesId = localStorage.getItem("modelTexturesId");
+console.log(`${apiPath}/rand_textures/?id=${modelId}-${modelTexturesId}`);
 		fetch(`${apiPath}/rand_textures/?id=${modelId}-${modelTexturesId}`)
 			.then(response => response.json())
 			.then(result => {
