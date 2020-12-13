@@ -1,7 +1,7 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
   $("body").click(function(e) {
-    var a = new Array("��ʹ��ָ","�������","�������","���ܳƵ�","С��ά��","��������","��ɽ����","�������","ʮ��ɽ·","��Ȼ����");
+    var a = new Array("颐使气指","疯狂宇宙","金科律玉","修宪称帝","小熊维尼","豪迈万丈","东山再起","满脸喷粪","十里山路","龟然不动");
     var $i = $("<span/>").text(a[a_idx]);
     var x = e.pageX,
     y = e.pageY;
