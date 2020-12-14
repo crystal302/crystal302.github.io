@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Welcome</title>
+    <url>/2020/12/11/hello-world/</url>
+    <content><![CDATA[<p>欢迎来到菜鸡 <font color=0xaaaaaa>crystal302</font> 的博客。</p>
+<p>玩的开心。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>20/12/13 五校联考</title>
+    <url>/2020/12/13/201213/</url>
+    <content><![CDATA[<p>ehzeux 与球/ehzeux 与圆周/ehzeux 与宠物猪</p>
+<a id="more"></a>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>原题：arc073c</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>分类讨论。</p>
+<p>钦定把最大的球染成红色。分类讨论。</p>
+<p>不妨设 $x_i\leq y_i$。</p>
+<p>如果最小的球也是红色，则 $r_{max}-r_{min}$ 就确定了。将所有的盒子按照 $x$ 从小到大排序，显然最优解一定是取一开始的一段取 $y$ 涂蓝 ，剩下的取 $x$ 涂蓝。</p>
+<p>如果最小的球是蓝色，那么显然必定是将所有的 $y$ 涂成红色，所有的 $x$ 涂成蓝色。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span> (ch&lt;<span class="string">&#x27;0&#x27;</span> || ch&gt;<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch==<span class="string">&#x27;-&#x27;</span>) f=-f;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (ch&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		x=x*<span class="number">10</span>+ch<span class="number">-48</span>;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">200010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pt</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(pt a,pt b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.x&lt;b.x; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> maxp[N],minp[N];</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">&quot;ball.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">&quot;ball.out&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> n=read(),minx=inf,miny=inf,maxx=<span class="number">0</span>,maxy=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		a[i].x=read();a[i].y=read();</span><br><span class="line">		<span class="keyword">if</span> (a[i].x&gt;a[i].y) swap(a[i].x,a[i].y);</span><br><span class="line">		minx=min(minx,a[i].x);</span><br><span class="line">		miny=min(miny,a[i].y);</span><br><span class="line">		maxx=max(maxx,a[i].x);</span><br><span class="line">		maxy=max(maxy,a[i].y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=(maxx-minx)*(maxy-miny);</span><br><span class="line">	sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n,cmp);</span><br><span class="line">	miny=a[<span class="number">1</span>].x;maxp[<span class="number">0</span>]=<span class="number">0</span>;minp[<span class="number">0</span>]=inf;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		maxp[i]=max(maxp[i<span class="number">-1</span>],a[i].y);</span><br><span class="line">		minp[i]=min(minp[i<span class="number">-1</span>],a[i].y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> res=inf;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=n;i&gt;=<span class="number">2</span>;--i)&#123;</span><br><span class="line">		res=min(res,max(maxp[i<span class="number">-1</span>],a[n].x)-min(minp[i],a[i].x));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;min(ans,(maxy-miny)*res)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	fclose(<span class="built_in">stdin</span>);</span><br><span class="line">	fclose(<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h3 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h3><p>原题：agc028d</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>不会。咕咕咕。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="keyword">int</span> g[N],f[N][N],p[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x+y&gt;=mod?x+y-mod:x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x-y&lt;<span class="number">0</span>?x-y+mod:x-y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L*x*y%mod; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span> (ch&lt;<span class="string">&#x27;0&#x27;</span> || ch&gt;<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch==<span class="string">&#x27;-&#x27;</span>) f=-f;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (ch&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		x=x*<span class="number">10</span>+ch<span class="number">-48</span>;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">&quot;circle.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">&quot;circle.out&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> n=read()&lt;&lt;<span class="number">1</span>,m=read(),ans=<span class="number">0</span>;</span><br><span class="line">	g[<span class="number">0</span>]=<span class="number">1</span>;<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i+=<span class="number">2</span>) g[i]=mul(g[i<span class="number">-2</span>],i<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> x=read(),y=read();p[x]=y;p[y]=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j+=<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> flag=<span class="number">1</span>,cnt=j-i+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=i;k&lt;=j;++k)&#123;</span><br><span class="line">				<span class="keyword">if</span> (p[k])&#123;</span><br><span class="line">					cnt--;</span><br><span class="line">					<span class="keyword">if</span> (p[k]&lt;i || p[k]&gt;j) flag=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (!flag) <span class="keyword">continue</span>;</span><br><span class="line">			f[i][j]=g[cnt];<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=j;k&gt;i;--k)&#123;</span><br><span class="line">				sum+=!p[k];f[i][j]=sub(f[i][j],mul(f[i][k<span class="number">-1</span>],g[sum]));</span><br><span class="line">			&#125;</span><br><span class="line">			ans=add(ans,mul(f[i][j],g[n<span class="number">-2</span>*m-cnt]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	fclose(<span class="built_in">stdin</span>);</span><br><span class="line">	fclose(<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h3><p>原题：agc034d</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>把曼哈顿距离的绝对值拆了。</p>
+<p>发现一个匹配的贡献就是：</p>
+<script type="math/tex; mode=display">
+\max(x_1+y_1-x_2-y_2,x_1-y_1-x_2+y_2,-x_1+y_1+x_2-y_2,-x_1-y_1+x_2+y_2)</script><p>搞四个中转点。</p>
+<p>原点向所有的白猪连边，流量 $z_i$ 费用 $0$。</p>
+<p>每个白猪向四个中转点连边，流量 $z_i$ 费用 $\pm x_i\pm y_i$。</p>
+<p>四个中转点向每个黑猪连边，流量 $z_i$ 费用 $-(\pm x_i\pm y_i)$。</p>
+<p>所有的黑猪向汇点连边，流量 $z_i$ 费用 $0$。</p>
+<p>最大费用最大流。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">40010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span> (ch&lt;<span class="string">&#x27;0&#x27;</span> || ch&gt;<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch==<span class="string">&#x27;-&#x27;</span>) f=-f;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (ch&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		x=x*<span class="number">10</span>+ch<span class="number">-48</span>;</span><br><span class="line">		ch=getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> etot=<span class="number">1</span>,ea[N&lt;&lt;<span class="number">2</span>],eb[N&lt;&lt;<span class="number">2</span>],ec[N],ed[N&lt;&lt;<span class="number">2</span>],ef[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pointList</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">apply</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> ++cnt;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;pt;</span><br><span class="line"><span class="keyword">int</span> ans,dis[N],S,T,maxflow,a[N],b[N],c[<span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[<span class="number">4</span>]=&#123;<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[<span class="number">4</span>]=&#123;<span class="number">-1</span>,<span class="number">1</span>,<span class="number">-1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	dis[S]=<span class="number">0</span>;vis[S]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;q.push(S);</span><br><span class="line">	<span class="keyword">while</span> (!q.empty())&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=ec[x];i;i=eb[i])&#123;</span><br><span class="line">			<span class="keyword">int</span> y=ea[i];</span><br><span class="line">			<span class="keyword">if</span> (dis[y]&gt;dis[x]+ed[i] &amp;&amp; ef[i])&#123;</span><br><span class="line">				dis[y]=dis[x]+ed[i];</span><br><span class="line">				<span class="keyword">if</span> (!vis[y])&#123;</span><br><span class="line">					q.push(y);vis[y]=<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dis[T]!=inf; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> flow)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x==T)&#123;</span><br><span class="line">		vis[T]=<span class="number">1</span>;maxflow+=flow;</span><br><span class="line">		<span class="keyword">return</span> flow;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> used=<span class="number">0</span>;</span><br><span class="line">	vis[x]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=ec[x];i;i=eb[i])&#123;</span><br><span class="line">		<span class="keyword">int</span> y=ea[i];</span><br><span class="line">		<span class="keyword">if</span> ((!vis[y] || y==T) &amp;&amp; ef[i] &amp;&amp; dis[y]==dis[x]+ed[i])&#123;</span><br><span class="line">			<span class="keyword">int</span> delta=dfs(y,min(flow-used,ef[i]));</span><br><span class="line">			<span class="keyword">if</span> (delta!=<span class="number">0</span>)&#123;</span><br><span class="line">				ans+=ed[i]*delta;ef[i]-=delta;ef[i^<span class="number">1</span>]+=delta;used+=delta;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (used==flow) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> used;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mcmf</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (spfa())&#123;</span><br><span class="line">		vis[T]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (vis[T])&#123;</span><br><span class="line">			<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">			dfs(S,inf);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> f,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	etot++;ea[etot]=y;eb[etot]=ec[x];ec[x]=etot;ed[etot]=z;ef[etot]=f;</span><br><span class="line">	etot++;ea[etot]=x;eb[etot]=ec[y];ec[y]=etot;ed[etot]=-z;ef[etot]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">&quot;pig.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">&quot;pig.out&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> n=read();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) a[i]=pt.apply();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) b[i]=pt.apply();</span><br><span class="line">	S=pt.apply();T=pt.apply();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;++i) c[i]=pt.apply();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> x=read(),y=read(),z=read();</span><br><span class="line">		addEdge(S,a[i],z,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k) addEdge(a[i],c[k],z,dx[k]*x+dy[k]*y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">int</span> x=read(),y=read(),z=read();</span><br><span class="line">		addEdge(b[i],T,z,<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k) addEdge(c[k],b[i],z,-dx[k]*x-dy[k]*y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;-mcmf()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	fclose(<span class="built_in">stdin</span>);</span><br><span class="line">	fclose(<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>五校联考</tag>
+        <tag>省选模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目汇集</title>
+    <url>/2020/12/13/items/</url>
+    <content><![CDATA[<p>小型项目/控制台项目汇集</p>
+<a id="more"></a>
+<p><b><font color=red>这些项目均已无限期停止更新。</font></b></p>
+<p><strong>如果需要源代码进行研究（甚至帮助更新），请通过邮箱 realZombie462@gmail.com 联系作者。</strong></p>
+<ul>
+<li><p>TowerDefence</p>
+<p>使用 vc6.0 和 easyx 库编写的简单塔防游戏。</p>
+<font color=green>该项目已经完成。</font>
+
+<p>最新版本 <a href="https://zombie462.github.io/items/towerdefence.zip">点击下载</a></p>
+</li>
+<li><p>Minecraft 2d (c++ game)</p>
+<p>使用 vc6.0 和 easyx 库编写的简单平面沙盒游戏。</p>
+<p>最新版本 <a href="https://zombie462.github.io/items/minecraft2d.zip">点击下载</a></p>
+</li>
+<li><p>Plant revenge 系列</p>
+<p>使用 pascal 编写的简单控制台游戏。（早年作品）</p>
+<p>同时有 c++ 重写后的版本。（只是开了个头）</p>
+<p>最新版本 <a href="https://zombie462.github.io/items/pr2.zip">点击下载</a></p>
+<p>额外版本 <a href="https://zombie462.github.io/items/pr3.zip">点击下载</a></p>
+</li>
+<li><p>魔塔 50 层（c++ game）</p>
+<p>使用 c++ 编写的简单控制台游戏（更新进度 15/50 层）。 </p>
+<p>最新版本 <a href="https://zombie462.github.io/items/mota50.zip">点击下载</a></p>
+</li>
+<li><p>烈焰编辑器</p>
+<p>使用 vb 编写的没啥用的一个神奇语言的代码编辑器。（早年作品）</p>
+<p>编译系统由 pascal 完成。</p>
+<p>最新版本 <a href="https://zombie462.github.io/items/flame_editor.zip">点击下载</a></p>
+</li>
+<li><p>一些更为差劲的项目</p>
+<ul>
+<li><p>SpecialGame</p>
+<p>一个塔防游戏的雏形。</p>
+<p>使用 vc6.0 和 easyx 编写。</p>
+<p>最新版本 <a href="https://zombie462.github.io/items/specialgame.zip">点击下载</a></p>
+</li>
+<li><p>Adventure 系列</p>
+<p>灰都不剩的渣作。</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PVZ (c++ game)</title>
+    <url>/2020/12/13/pvz/</url>
+    <content><![CDATA[<p>PVZ (c++ game) - 最新版本 v1.0.4</p>
+<a id="more"></a>
+<p><b><font color=red>本项目已无限期停止更新。</font></b></p>
+<p>PVZ (c++ game) 是一款使用 vc6.0 编写、采用 easyx 图形库的植物大战僵尸游戏。</p>
+<p>具体信息详见各个版本目录下的 <code>readme.md</code> 文件。</p>
+<p>下载地址：</p>
+<p>v1.0.4 <a href="https://zombie462.github.io/PVZ v1.0.4.zip">点击下载</a></p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zjudge</title>
+    <url>/2020/12/12/zjudge/</url>
+    <content><![CDATA[<p>Zjudge - 最新版本 v1.3.0</p>
+<a id="more"></a>
+<p><b><font color=red>本项目已无限期停止更新。</font></b></p>
+<p>Zjudge 是一款基于控制台的程序评测系统。</p>
+<p>具体信息详见各个版本目录下的 <code>readme.txt</code> 文件。</p>
+<p><strong>注意：旧版本将不会得到维护。</strong></p>
+<p>下载地址：</p>
+<p>v1.1.0 <a href="https://zombie462.github.io/items/Zjudge v1.1.0.zip">点击下载</a></p>
+<p>v1.1.1 <a href="https://zombie462.github.io/items/Zjudge v1.1.1.zip">点击下载</a></p>
+<p>v1.1.2 <a href="https://zombie462.github.io/items/Zjudge v1.1.2.zip">点击下载</a></p>
+<p>v1.2.0 <a href="https://zombie462.github.io/items/Zjudge v1.2.0.zip">点击下载</a></p>
+<p>v1.3.0 <a href="https://zombie462.github.io/items/Zjudge v1.3.0.zip">点击下载</a></p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>音乐列表</title>
+    <url>/2020/12/12/music_list/</url>
+    <content><![CDATA[<p>神的随波逐流（yousa）</p>
+<audio controls>
+  <source src="https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io/items/music1.mp3" type="audio/mp3">
+</audio>
+]]></content>
+      <categories>
+        <category>音频</category>
+      </categories>
+      <tags>
+        <tag>音频</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>薄的随波逐流</title>
+    <url>/2020/12/12/bo_de_sui_bo_zhu_liu/</url>
+    <content><![CDATA[<p>薄的随波逐流.mp4</p>
+<a id="more"></a>
+<video controls="" autoplay="" name="media"><source src="https://zombie462.github.io/items/video_2.mp4" type="video/mp4"></video>]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>视频</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>秦城欢迎你</title>
+    <url>/2020/12/12/qin_cheng_huan_ying_ni/</url>
+    <content><![CDATA[<p>秦城欢迎你.mp4</p>
+<a id="more"></a>
+<video controls="" autoplay="" name="media"><source src="https://zombie462.github.io/items/video_1.mp4" type="video/mp4"></video>]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>视频</tag>
+      </tags>
+  </entry>
+</search>
