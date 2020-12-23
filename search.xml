@@ -8,6 +8,48 @@
 ]]></content>
   </entry>
   <entry>
+    <title>英语听写辅助 Beta</title>
+    <url>/2020/12/23/english/</url>
+    <content><![CDATA[<p>EnglishStudy Beta - 最新版本 v1.0.0</p>
+<a id="more"></a>
+<p><b><font color=green>本项目正在持续更新。</font></b></p>
+<p>EnglishStudy Beta 是一款基于控制台的英语听写辅助软件。</p>
+<p><code>readme.md</code> 文件从此项目起将<strong>不会</strong>涵盖在各版本的目录下。而是在<strong>本文档</strong>更新。</p>
+<p>下载地址：</p>
+<p>Beta v1.0.0 <a href="https://zombie462.github.io/items/EnglishStudy_Beta1.0.0.zip">点击下载</a></p>
+<h3 id="README-MD"><a href="#README-MD" class="headerlink" title="README.MD"></a>README.MD</h3><h4 id="操作说明"><a href="#操作说明" class="headerlink" title="操作说明"></a>操作说明</h4><p>按照程序中的指示完成配置/学习单词表即可。</p>
+<p>注意：程序中的选项框使用 <code>WS</code> 键控制选项，当然 <code>AD</code> 和数字键也有各自的妙用。空格键选中选项。</p>
+<h4 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h4><p>Alpha v1.0.0 内容一览</p>
+<ul>
+<li><p>支持创建、保存、编辑单词表功能。</p>
+</li>
+<li><p>支持学习单词表功能。错误的单词会追加到学习清单末尾，直到正确为止。</p>
+<p>上述功能由 Crystal302 实现（Created By Crystal302）。即程序的主体架构、主要功能设计等。</p>
+</li>
+<li><p>使用彩色控制台界面，优化操作手感和学习体验。</p>
+<p>此功能由 Zombie462 维护（Powered By Zombie462）。参见辅助类项目 <code>consoleUI.h</code>（此项目未在 Crystal302 的博客发布）。</p>
+</li>
+</ul>
+<p>Beta v1.0.0 更新内容</p>
+<ul>
+<li><p>现在单词学习时采用<strong>非严格比较模式</strong>，比较时将忽略部分无实际意义/意义不清的部分（比如 <code>...</code> 等）。</p>
+<p>此功能由 Qingyu 维护（Powered By Qingyu）。</p>
+</li>
+</ul>
+<h4 id="开源说明"><a href="#开源说明" class="headerlink" title="开源说明"></a>开源说明</h4><p>本项目公测（Beta）版本提供源代码供学习。</p>
+<h4 id="已知-Bug"><a href="#已知-Bug" class="headerlink" title="已知 Bug"></a>已知 Bug</h4><p>Beta v1.0.0</p>
+<ul>
+<li>非严格比较模式已知存在部分 Bug。下一个版本将尝试修复。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>20/12/22 上午</title>
     <url>/2020/12/22/201222/</url>
     <content><![CDATA[<p>Minium Cut/Tree/塔</p>
