@@ -174,6 +174,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Showhand 模拟器</title>
+    <url>/2021/01/03/showhand/</url>
+    <content><![CDATA[<p>Showhand 模拟器 - 最新版本 v1.0.0</p>
+<a id="more"></a>
+<p><b><font color=green>本项目正在持续更新。</font></b></p>
+<p>Showhand 模拟器是一款基于控制台的双人游戏。支持局域网连接。</p>
+<p><code>readme.md</code> 文件从此项目起将<strong>不会</strong>涵盖在各版本的目录下。而是在<strong>本文档</strong>更新。</p>
+<p>下载地址：</p>
+<p>Beta v1.0.0 <a href="https://zombie462.github.io/items/showhand.zip">点击下载</a></p>
+<h3 id="README-MD"><a href="#README-MD" class="headerlink" title="README.MD"></a>README.MD</h3><h4 id="操作说明"><a href="#操作说明" class="headerlink" title="操作说明"></a>操作说明</h4><p>按照游戏中的指示完成操作即可。</p>
+<p>注意：程序中的选项框使用 <code>WS</code> 键控制选项，当然 <code>AD</code> 和数字键也有各自的妙用。空格键选中选项。</p>
+<p>运行时请根据系统指示打开防火墙的权限。</p>
+<h4 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h4><p>Beta v1.0.0 内容一览</p>
+<ul>
+<li>支持双人对战的经典 Showhand 游戏</li>
+<li>游戏结果手动判定，由双方统一通过决定。</li>
+<li>采用 consoleUI 库和 serverUI 库，此功能由 zombie462 维护。</li>
+</ul>
+<h4 id="开源说明"><a href="#开源说明" class="headerlink" title="开源说明"></a>开源说明</h4><p>本项目公测（Beta）版本提供源代码供学习。</p>
+<p>编译时请开启 <code>-std=c++11 -lwsock32</code> 编译选项。</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>20/12/27 模拟</title>
     <url>/2020/12/27/201227/</url>
     <content><![CDATA[<p>大佬的难题/回文串/营养餐</p>
