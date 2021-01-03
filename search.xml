@@ -183,6 +183,7 @@
 <p><code>readme.md</code> 文件从此项目起将<strong>不会</strong>涵盖在各版本的目录下。而是在<strong>本文档</strong>更新。</p>
 <p>下载地址：</p>
 <p>Beta v1.0.0 <a href="https://zombie462.github.io/items/showhand.zip">点击下载</a></p>
+<p>Beta v1.1.0 <a href="https://zombie462.github.io/items/showhand_v1.1.zip">点击下载</a></p>
 <h3 id="README-MD"><a href="#README-MD" class="headerlink" title="README.MD"></a>README.MD</h3><h4 id="操作说明"><a href="#操作说明" class="headerlink" title="操作说明"></a>操作说明</h4><p>按照游戏中的指示完成操作即可。</p>
 <p>注意：程序中的选项框使用 <code>WS</code> 键控制选项，当然 <code>AD</code> 和数字键也有各自的妙用。空格键选中选项。</p>
 <p>运行时请根据系统指示打开防火墙的权限。</p>
@@ -191,6 +192,11 @@
 <li>支持双人对战的经典 Showhand 游戏</li>
 <li>游戏结果手动判定，由双方统一通过决定。</li>
 <li>采用 consoleUI 库和 serverUI 库，此功能由 zombie462 维护。</li>
+</ul>
+<p>Beta v1.1.0 内容一览</p>
+<ul>
+<li>增加了自定义规则。</li>
+<li>现在当前牌大的将获得先手资格。</li>
 </ul>
 <h4 id="开源说明"><a href="#开源说明" class="headerlink" title="开源说明"></a>开源说明</h4><p>本项目公测（Beta）版本提供源代码供学习。</p>
 <p>编译时请开启 <code>-std=c++11 -lwsock32</code> 编译选项。</p>
