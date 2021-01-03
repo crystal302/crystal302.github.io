@@ -185,6 +185,7 @@
 <p>Beta v1.0.0 <a href="https://zombie462.github.io/items/showhand.zip">点击下载</a></p>
 <p>Beta v1.1.0 <a href="https://zombie462.github.io/items/showhand_v1.1.zip">点击下载</a></p>
 <p>Beta v1.2.0 <a href="https://zombie462.github.io/items/showhand_v1.2.zip">点击下载</a></p>
+<p>Beta v1.3.0 <a href="https://zombie462.github.io/items/showhand_v1.3.zip">点击下载</a></p>
 <h3 id="README-MD"><a href="#README-MD" class="headerlink" title="README.MD"></a>README.MD</h3><h4 id="操作说明"><a href="#操作说明" class="headerlink" title="操作说明"></a>操作说明</h4><p>按照游戏中的指示完成操作即可。</p>
 <p>注意：程序中的选项框使用 <code>WS</code> 键控制选项，当然 <code>AD</code> 和数字键也有各自的妙用。空格键选中选项。</p>
 <p>运行时请根据系统指示打开防火墙的权限。</p>
@@ -201,7 +202,12 @@
 </ul>
 <p>Beta v1.2.0 内容一览</p>
 <ul>
-<li>修复了不符合经典游戏规定的 BUG</li>
+<li>修复了不符合经典游戏规定的 BUG。</li>
+</ul>
+<p>Beta v1.3.0 内容一览</p>
+<ul>
+<li>加入了版本校验功能。服务端和客户端必须版本号相同才能连接。</li>
+<li>支持设置最大下注和梭注功能。</li>
 </ul>
 <h4 id="开源说明"><a href="#开源说明" class="headerlink" title="开源说明"></a>开源说明</h4><p>本项目公测（Beta）版本提供源代码供学习。</p>
 <p>编译时请开启 <code>-std=c++11 -lwsock32</code> 编译选项。</p>
