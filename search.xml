@@ -174,6 +174,805 @@
       </tags>
   </entry>
   <entry>
+    <title>ConsoleUI 5.0</title>
+    <url>/2021/01/07/consoleUI5/</url>
+    <content><![CDATA[<p>ConsoleUI 5 - 最新版本 v5.0.0</p>
+<a id="more"></a>
+<p><b><font color=green>本项目正在持续更新中。</font></b></p>
+<p>ConsoleUI 5 是一个辅助控制台编程的<strong>头文件</strong>。相比于 ConsoleUI 4 更强大。</p>
+<p><code>readme.md</code> 文件<strong>同时</strong>涵盖在各版本目录以及此文档下。</p>
+<p>下载地址：</p>
+<p>v5.0.0 <a href="https://zombie462.github.io/items/console_v5.0.zip">点击下载</a></p>
+<h3 id="README-MD"><a href="#README-MD" class="headerlink" title="README.MD"></a>README.MD</h3><h3 id="1-总览"><a href="#1-总览" class="headerlink" title="1 总览"></a>1 总览</h3><p>ConsoleUI 5.0 采用的是控件模板架构，比纯基于控制台的 ConsoleUI 4.0 更高级、更人性化。</p>
+<h3 id="2-基本方法"><a href="#2-基本方法" class="headerlink" title="2 基本方法"></a>2 基本方法</h3><h4 id="2-1-常用基本方法"><a href="#2-1-常用基本方法" class="headerlink" title="2.1 常用基本方法"></a>2.1 常用基本方法</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>showCursor</td>
+<td><code>void showCursor()</code></td>
+<td>显示光标</td>
+</tr>
+<tr>
+<td>hideCursor</td>
+<td><code>void hideCursor()</code></td>
+<td>隐藏光标</td>
+</tr>
+<tr>
+<td>clrscr</td>
+<td><code>void clrscr()</code></td>
+<td>清空屏幕</td>
+</tr>
+<tr>
+<td>toHex</td>
+<td><code>int toHex(char c)</code></td>
+<td>十六进制字符（小写）转十进制</td>
+</tr>
+<tr>
+<td>setColor</td>
+<td><code>void setColor(int colorID)</code></td>
+<td>修改输出字符颜色为 colorID（见附录 1）</td>
+</tr>
+<tr>
+<td>setWindowSize</td>
+<td><code>void setWindowSize(string name,int width,int height)</code></td>
+<td>修改控制台窗体标题/宽/高</td>
+</tr>
+<tr>
+<td>getxy</td>
+<td><code>pair &lt;int,int&gt; getxy()</code></td>
+<td>获得当前光标所在的行/列</td>
+</tr>
+<tr>
+<td>getPos</td>
+<td><code>void getpos(POINT &amp;pt)</code></td>
+<td>获得当前鼠标所在的行/列（保存在 pt 中）</td>
+</tr>
+<tr>
+<td>press</td>
+<td><code>#define press(VK_NONAME) ((GetAsyncKeyState(VK_NONAME)&amp;0x8000)?1:0)</code></td>
+<td>检测是否有键按下（见附录 2）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="附录1-ColorID-对应表"><a href="#附录1-ColorID-对应表" class="headerlink" title="*附录1 - ColorID 对应表"></a>*附录1 - ColorID 对应表</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>ColorID</th>
+<th>颜色</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>黑色/BLACK</td>
+<td><strong><font color=black>0</font></strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td>深蓝色/DARK BLUE</td>
+<td><strong><font color=#00007f>1</font></strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>深绿色/DARK GREEN</td>
+<td><strong><font color=#007f00>2</font></strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>深青色/DARK CYAN</td>
+<td><strong><font color=#007f7f>3</font></strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>深红色/DARK RED</td>
+<td><strong><font color=#7f0000>4</font></strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>深紫色/DARK MAGENTA</td>
+<td><strong><font color=#7f007f>5</font></strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>深黄色/DARK YELLOW</td>
+<td><strong><font color=#7f7f00>6</font></strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>浅灰色/GRAY</td>
+<td><strong><font color=lightgray>7</font></strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>深灰色/DARK GRAY</td>
+<td><strong><font color=#777777>8</font></strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>蓝色/BLUE</td>
+<td><strong><font color=blue>9</font></strong></td>
+</tr>
+<tr>
+<td>10/a</td>
+<td>绿色/GREEN</td>
+<td><strong><font color=green>a</font></strong></td>
+</tr>
+<tr>
+<td>11/b</td>
+<td>青色/CYAN</td>
+<td><strong><font color=cyan>b</font></strong></td>
+</tr>
+<tr>
+<td>12/c</td>
+<td>红色/RED</td>
+<td><strong><font color=red>c</font></strong></td>
+</tr>
+<tr>
+<td>13/d</td>
+<td>紫色/MAGENTA</td>
+<td><strong><font color=magenta>d</font></strong></td>
+</tr>
+<tr>
+<td>14/e</td>
+<td>黄色/YELLOW</td>
+<td><strong><font color=yellow>e</font></strong></td>
+</tr>
+<tr>
+<td>15/f</td>
+<td>白色/WHITE</td>
+<td><strong><font color=white>f</font></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*控制台的默认颜色是浅灰色。</p>
+<p>*setColor 中一般用 colorID 十六进制的高位表示背景颜色，低位表示字符颜色。如 colorID=0xcf 表示红色背景/白色字符。</p>
+<h4 id="附录-2-VK-NONAME-对应表"><a href="#附录-2-VK-NONAME-对应表" class="headerlink" title="*附录 2 - VK_NONAME 对应表"></a>*附录 2 - VK_NONAME 对应表</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>VK_NONAME</th>
+<th>键位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VK_LBUTTON</td>
+<td>左键</td>
+</tr>
+<tr>
+<td>VK_RBUTTON</td>
+<td>右键</td>
+</tr>
+<tr>
+<td>VK_SHIFT/VK_CTRL/VK_ALT/…</td>
+<td>对应键位</td>
+</tr>
+<tr>
+<td>‘A’/‘B’/‘C’/…</td>
+<td>对应键位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-RawText"><a href="#2-2-RawText" class="headerlink" title="2.2 RawText"></a>2.2 RawText</h4><p>和 ConsoleUI 4.0 一样，我们使用 RawText 类型来简便地表示带格式字符串。</p>
+<p><strong>RawText 成员变量表：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>string</code></td>
+<td>表示带格式字符串</td>
+</tr>
+<tr>
+<td>numBuf</td>
+<td><code>vector &lt;int&gt;</code></td>
+<td>表示替代 <code>%d</code> 的数字列表</td>
+</tr>
+<tr>
+<td>strBuf</td>
+<td><code>vector &lt;string&gt;</code></td>
+<td>表示替代 <code>%s</code> 的字符串列表</td>
+</tr>
+<tr>
+<td>dblBuf</td>
+<td><code>vector &lt;double&gt;</code></td>
+<td>表示替代 <code>%f</code> 的浮点数列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中，带格式字符串，是一个一般字符串中间插入一些表示格式的字符短语（如 <code>&amp;d</code>）等，来表达修改格式的意义。</p>
+<p><strong>具体地：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;X</td>
+<td>将之后字符输出的颜色变为 X</td>
+<td>&amp;c 字符颜色变为红色</td>
+</tr>
+<tr>
+<td>#X</td>
+<td>将之后字符输出的背景颜色变为 X</td>
+<td>#c 字符背景颜色变为红色</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>从 numBuf/strBuf/dblBuf 中调出下一个元素输出</td>
+<td>%d 表示从 numBuf 调出下一个元素输出</td>
+</tr>
+<tr>
+<td>/X</td>
+<td>直接输出 X 字符（用于转义）。<code>/n</code> 不适用此条规则。</td>
+<td>略</td>
+</tr>
+<tr>
+<td>/n</td>
+<td>换行。且列坐标和第一个字符相等。</td>
+<td>略</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>和它有关的方法有：</strong></p>
+<p>构造函数：<code>RawText(string _text=&quot;&quot;,vector &lt;int&gt; numBuf=&#123;&#125;,vector &lt;string&gt; strBuf=&#123;&#125;,vector &lt;double&gt; dblBuf=&#123;&#125;)</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RawText::print</td>
+<td><code>void RawText::print(int backColor=0)</code></td>
+<td>输出 RawText 中的内容，且默认背景颜色为 backColor</td>
+</tr>
+<tr>
+<td>toRaw</td>
+<td><code>RawText toRaw(string s)</code></td>
+<td>string 转 RawText</td>
+</tr>
+<tr>
+<td>tellraw</td>
+<td><code>void tellraw(RawText s)</code></td>
+<td>等价于 s.print()</td>
+</tr>
+<tr>
+<td>tellraw</td>
+<td><code>void tellraw(string s)</code></td>
+<td>等价于 toRaw(s).print()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-控件"><a href="#3-控件" class="headerlink" title="3 控件"></a>3 控件</h3><p>主要详解 Object 类的内容。</p>
+<h4 id="3-1-通用"><a href="#3-1-通用" class="headerlink" title="3.1 通用"></a>3.1 通用</h4><p>所有继承于 Object 的类都有这些通用成员。</p>
+<p><strong>通用成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible</td>
+<td><code>bool</code></td>
+<td>是否可见</td>
+</tr>
+<tr>
+<td>chosen</td>
+<td><code>bool</code></td>
+<td>保留作 option 类</td>
+</tr>
+<tr>
+<td>enable</td>
+<td><code>bool</code></td>
+<td>是否可用</td>
+</tr>
+<tr>
+<td>xpos/ypos</td>
+<td><code>int</code></td>
+<td>左上角行/列坐标</td>
+</tr>
+<tr>
+<td>faObject</td>
+<td><code>Form*</code></td>
+<td>父对象。详见 Form 类解释</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>OBJECT_TYPE</code></td>
+<td>控件类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*OBJECT_TYPE</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">OBJECT_TYPE</span>&#123;</span></span><br><span class="line">	OBJECT,FORM,BUTTON,LABEL,OPTION,CHECKBOX,PROGRESS_BAR,LABEL_VAL,LIST</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><em>注意：所有控件的 xpos/ypos 为关于它父对象的<em>*相对坐标</em></em>。</p>
+<p><strong>通用成员函数：</strong></p>
+<p>构造函数：<code>Object()</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remove</td>
+<td><code>void remove()</code></td>
+<td>移除控件</td>
+</tr>
+<tr>
+<td>hide</td>
+<td><code>void hide()</code></td>
+<td>隐藏控件（本质上是重新打印父控件）</td>
+</tr>
+<tr>
+<td>show</td>
+<td><code>void show()</code></td>
+<td>显示控件</td>
+</tr>
+<tr>
+<td>print</td>
+<td><code>virtual void print()</code></td>
+<td>输出控件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-2-Form"><a href="#3-2-Form" class="headerlink" title="3.2 Form"></a>3.2 Form</h4><p>Form 控件是控件的载体。任何其他控件都应该被包含在某一个 Form 里，作为它的子控件。Form 之间的嵌套关系形成一棵树。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td><code>int</code></td>
+<td>控件宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td><code>int</code></td>
+<td>控件高度</td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td><code>int</code></td>
+<td>控件背景颜色</td>
+</tr>
+<tr>
+<td>sonObjects</td>
+<td><code>vector &lt;Object*&gt;</code></td>
+<td>该控件包含的子控件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>Form(int _xpos=0,int _ypos=0,int _width=0,int _height=0,Form* _faObject=nullptr,int _bgColor=0)</code></p>
+<h4 id="3-3-Button"><a href="#3-3-Button" class="headerlink" title="3.3 Button"></a>3.3 Button</h4><p>按钮控件。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bgColor</td>
+<td><code>int</code></td>
+<td>按钮背景颜色</td>
+</tr>
+<tr>
+<td>bgPressColor</td>
+<td><code>int</code></td>
+<td>按钮被触碰（不一定点击）时背景颜色</td>
+</tr>
+<tr>
+<td>isPress</td>
+<td><code>bool</code></td>
+<td>按钮是否被触碰</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>按钮上显示字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>Button(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,int _bgColor=0,int _bgPressColor=0)</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preserve</td>
+<td><code>int preserve()</code></td>
+<td>维护按钮。如果按钮被触碰，返回 1；如果按钮被点击，返回 2；否则返回 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*所有的维护按钮函数只会判定一次，所以你应当使用 <code>while (1)</code> 等语句连续地判定。</p>
+<h4 id="3-4-Label"><a href="#3-4-Label" class="headerlink" title="3.4 Label"></a>3.4 Label</h4><p>标签控件。简称文本框。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>标签上显示的字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>Label(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr)</code></p>
+<h4 id="3-5-Option"><a href="#3-5-Option" class="headerlink" title="3.5 Option"></a>3.5 Option</h4><p>单选框控件。同一个 Form 的直系子单选框只能有一个被选中。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tickChar</td>
+<td><code>char</code></td>
+<td>选择时显示的“钩”的字符</td>
+</tr>
+<tr>
+<td>tickColor</td>
+<td><code>int</code></td>
+<td>选择时显示的“钩”的颜色</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>单选框显示的字符</td>
+</tr>
+<tr>
+<td>blockChar</td>
+<td><code>string</code></td>
+<td>显示的框的字符类型。第一和第二个字符分别表示左/右边框</td>
+</tr>
+<tr>
+<td>isPress</td>
+<td><code>bool</code></td>
+<td>单选框是否被触碰</td>
+</tr>
+<tr>
+<td>chosen</td>
+<td><code>int</code></td>
+<td>单选框是否被选择</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>Option(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,int _tickColor=10,char _tickChar=&#39;X&#39;,string _blockChar=&quot;()&quot;)</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td><code>virtual void set(int tp=-1)</code></td>
+<td>将选择框的状态改成 tp。如果未定义 tp，则默认翻转状态</td>
+</tr>
+<tr>
+<td>preserve</td>
+<td><code>int preserve()</code></td>
+<td>同按钮的 preserve（点击时还会自动更改选择框状态）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-5-1-CheckBox"><a href="#3-5-1-CheckBox" class="headerlink" title="3.5.1 CheckBox"></a>3.5.1 CheckBox</h4><p>多选框控件。同一个 Form 的直系子多选框可以有多个被选中。</p>
+<p>构造函数：<code>CheckBox(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,int _tickColor=10,char _tickChar=&#39;O&#39;,string _blockChar=&quot;[]&quot;)</code></p>
+<h4 id="3-6-ProgressBar"><a href="#3-6-ProgressBar" class="headerlink" title="3.6 ProgressBar"></a>3.6 ProgressBar</h4><p>进度条控件。可以选择绑定一个变量指针来实时反馈其与总量的关系。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td><code>int</code></td>
+<td>进度条长度</td>
+</tr>
+<tr>
+<td>barColor</td>
+<td><code>int</code></td>
+<td>进度条颜色</td>
+</tr>
+<tr>
+<td>style</td>
+<td><code>int</code></td>
+<td>进度条风格</td>
+</tr>
+<tr>
+<td>maxVal</td>
+<td><code>int</code></td>
+<td>进度条上限</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>int*</code></td>
+<td>进度条绑定的变量指针</td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>进度条标题</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*进度条的风格是一个两位二进制整数。高位表示是否显示形如 <code>X/Y</code> 的数字，低位表示是否将进度条用中括号括起来。</p>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>ProgressBar(RawText _text,int _xpos=0,int _ypos=0,int _width=0,Form* _faObject=nullptr,int* _value=nullptr,int _maxVal=100,int _barColor=12,int _style=0)</code></p>
+<p>*使用 print 函数实时更新进度条状态。</p>
+<h4 id="3-7-LabelVal"><a href="#3-7-LabelVal" class="headerlink" title="3.7 LabelVal"></a>3.7 LabelVal</h4><p>带变量的标签。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>标签显示的文字</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>void**</code></td>
+<td>标签绑定的变量</td>
+</tr>
+<tr>
+<td>maxVal</td>
+<td><code>int</code></td>
+<td>标签显示的上限值（为 -1 则不显示）</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td><code>DATA_TYPE</code></td>
+<td>标签绑定的变量类型</td>
+</tr>
+<tr>
+<td>valCol</td>
+<td><code>int</code></td>
+<td>标签显示的变量颜色</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*DATA_TYPE</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">DATA_TYPE</span>&#123;</span></span><br><span class="line">	_INT,_DOUBLE,_STRING</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>成员函数</strong></p>
+<p>构造函数：</p>
+<ul>
+<li><code>LabelVal(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,int* _value=nullptr,int _valCol=14,int _maxVal=-1);</code></li>
+<li><code>LabelVal(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,double* _value=nullptr,int _valCol=14,int _maxVal=-1);</code></li>
+<li><code>LabelVal(RawText _text,int _xpos=0,int _ypos=0,Form* _faObject=nullptr,string* _value=nullptr,int _valCol=14,int _maxVal=-1);</code></li>
+</ul>
+<p>*使用 print 函数实时更新标签状态。</p>
+<h4 id="3-8-List"><a href="#3-8-List" class="headerlink" title="3.8 List"></a>3.8 List</h4><p>列表控件。</p>
+<p><strong>成员变量：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><code>RawText</code></td>
+<td>列表的标题</td>
+</tr>
+<tr>
+<td>items</td>
+<td><code>vector &lt;RawText&gt;*</code></td>
+<td>绑定的 vector 作为列表</td>
+</tr>
+<tr>
+<td>perPage</td>
+<td><code>int</code></td>
+<td>单页显示的页数</td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>int</code></td>
+<td>列表主体的宽度</td>
+</tr>
+<tr>
+<td>isChosen</td>
+<td><code>int</code></td>
+<td>列表被选中的项</td>
+</tr>
+<tr>
+<td>bgPressColor</td>
+<td><code>int</code></td>
+<td>项目被选中时的颜色</td>
+</tr>
+<tr>
+<td>nowPage</td>
+<td><code>int</code></td>
+<td>列表所处的列数</td>
+</tr>
+<tr>
+<td>pageFormat</td>
+<td><code>string</code></td>
+<td>显示页数的格式（使用 RawText 格式，允许使用两个 %d 表示当前页数和总页数）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>成员函数：</strong></p>
+<p>构造函数：<code>List(RawText _text,int _xpos=0,int _ypos=0,int _width=0,Form* _faObject=nullptr,vector &lt;RawText&gt;* _items=nullptr,int _perPage=5,int _bgPressColor=7,string _pageFormat=&quot;第 &amp;e%d&amp;7//%d 页&quot;)</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preserve</td>
+<td><code>int preserve()</code></td>
+<td>维护列表。如果点击了列表的某一项，返回它的编号；否则返回 -1</td>
+</tr>
+<tr>
+<td>nextPage</td>
+<td><code>void nextPage()</code></td>
+<td>前进至下一页（自带 print）</td>
+</tr>
+<tr>
+<td>prevPage</td>
+<td><code>void printPage()</code></td>
+<td>后退至上一页（自带 print）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*你可能需要额外自行定义几个按钮来实现换页功能。</p>
+<h3 id="4-控件示例"><a href="#4-控件示例" class="headerlink" title="4. 控件示例"></a>4. 控件示例</h3><h4 id="4-1-Form-示例"><a href="#4-1-Form-示例" class="headerlink" title="4.1 Form 示例"></a>4.1 Form 示例</h4><p>这个程序能够让你大概了解 Form 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - Form&quot;</span>,<span class="number">90</span>,<span class="number">45</span>); <span class="comment">//重定义控制台窗口大小/宽度/高度</span></span><br><span class="line">	hideCursor(); <span class="comment">//隐藏光标</span></span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>; <span class="comment">//创建一个左上角位于 (1,1) 的 Form，其高度/宽度分别为 45/90。这是一个主框架，所以没有父框架。背景颜色为 0（黑色）</span></span><br><span class="line">	<span class="function">Form <span class="title">Form1</span><span class="params">(<span class="number">5</span>,<span class="number">10</span>,<span class="number">35</span>,<span class="number">70</span>,&amp;mainForm,<span class="number">1</span>)</span></span>; <span class="comment">//创建一个左上角相对于其父框架 mainForm 位于 (5,10) 的 Form。其它同理</span></span><br><span class="line">	<span class="function">Form <span class="title">Form2</span><span class="params">(<span class="number">5</span>,<span class="number">10</span>,<span class="number">25</span>,<span class="number">50</span>,&amp;Form1,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="function">Form <span class="title">Form3</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>,<span class="number">21</span>,<span class="number">21</span>,&amp;Form2,<span class="number">3</span>)</span></span>;</span><br><span class="line">	<span class="function">Form <span class="title">Form4</span><span class="params">(<span class="number">3</span>,<span class="number">27</span>,<span class="number">21</span>,<span class="number">21</span>,&amp;Form2,<span class="number">4</span>)</span></span>;</span><br><span class="line">	_getch();</span><br><span class="line">	Form3.hide(); <span class="comment">//隐藏指令</span></span><br><span class="line">	_getch();</span><br><span class="line">	Form3.show(); <span class="comment">//显示指令</span></span><br><span class="line">	_getch();</span><br><span class="line">	Form2.hide();</span><br><span class="line">	_getch();</span><br><span class="line">	Form2.show();</span><br><span class="line">	_getch(); </span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>整个程序尽可能只有一个 Form 没有父框架。因为没有父框架的控件几乎不支持任何功能。</li>
+<li>子框架的大小必须严格小于父框架的大小，否则在显示上会出现问题。</li>
+<li>再次提醒：控件的坐标为其相对于父框架的坐标。</li>
+<li>在程序运行时不要缩放控制台窗口，否则会出现不可预料的错误。</li>
+<li>任何控件在被创建时，如果其父控件显示，则程序会试图显示该控件。</li>
+</ul>
+<h4 id="4-2-Button-示例"><a href="#4-2-Button-示例" class="headerlink" title="4.2 Button 示例"></a>4.2 Button 示例</h4><p>这个程序能够让你大概了解 Button 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - Button&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">bt</span><span class="params">(toRaw(<span class="string">&quot;  &amp;f关闭程序  &quot;</span>),<span class="number">10</span>,<span class="number">20</span>,&amp;mainForm,<span class="number">4</span>,<span class="number">12</span>)</span></span>; <span class="comment">//创建按钮，按钮的宽度会由按钮上的文字自动生成。按钮在触碰时显示红色（12），未触碰时显示深红色（4）</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123; <span class="comment">//持续地维护按钮</span></span><br><span class="line">		<span class="keyword">if</span> (bt.preserve()==<span class="number">2</span>) <span class="keyword">break</span>; <span class="comment">//如果按钮被点击，则退出程序</span></span><br><span class="line">	&#125;</span><br><span class="line">	bt.hide();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>为了正常地进行鼠标操作，<strong>请关闭控制台的“快速编辑模式”</strong>。</li>
+</ul>
+<h4 id="4-3-Label-示例"><a href="#4-3-Label-示例" class="headerlink" title="4.3 Label 示例"></a>4.3 Label 示例</h4><p>这个程序能够让你大概了解 Label 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - Label&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">Label <span class="title">lb</span><span class="params">(toRaw(<span class="string">&quot;&amp;f欢迎/n这里是 &amp;eConsoleUI5.0&amp;f/n如果有什么问题请联系 &amp;bCrystal302&quot;</span>),<span class="number">10</span>,<span class="number">20</span>,&amp;mainForm)</span></span>; <span class="comment">//这是一个显示多行字符的 Label</span></span><br><span class="line">	_getch();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>注意 RawText 中 <code>\n</code> 和 <code>/n</code> 的区别，前者是换行字符，后者是 RawText 控制字符。后者换行时还将与整句话的第一个字符列坐标对齐。</li>
+</ul>
+<h4 id="4-4-Option-amp-CheckBox-示例"><a href="#4-4-Option-amp-CheckBox-示例" class="headerlink" title="4.4 Option &amp; CheckBox 示例"></a>4.4 Option &amp; CheckBox 示例</h4><p>这个程序能够让你大概了解 Option 或 CheckBox 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - Option&amp;CheckBox&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">Form <span class="title">form1</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,&amp;mainForm,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">Label <span class="title">lb</span><span class="params">(toRaw(<span class="string">&quot;&amp;f请选择：/n你的性别：/n/n你掌握的语言：&quot;</span>),<span class="number">10</span>,<span class="number">20</span>,&amp;form1)</span></span>;</span><br><span class="line">	<span class="function">Option <span class="title">opMale</span><span class="params">(toRaw(<span class="string">&quot;&amp;b男&quot;</span>),<span class="number">12</span>,<span class="number">20</span>,&amp;form1,<span class="number">11</span>)</span></span>;</span><br><span class="line">	<span class="function">Option <span class="title">opFemale</span><span class="params">(toRaw(<span class="string">&quot;&amp;c女&quot;</span>),<span class="number">12</span>,<span class="number">32</span>,&amp;form1,<span class="number">12</span>)</span></span>;</span><br><span class="line">	<span class="function">CheckBox <span class="title">chkCpp</span><span class="params">(toRaw(<span class="string">&quot;&amp;bC++&quot;</span>),<span class="number">14</span>,<span class="number">20</span>,&amp;form1,<span class="number">11</span>)</span></span>;</span><br><span class="line">	<span class="function">CheckBox <span class="title">chkJava</span><span class="params">(toRaw(<span class="string">&quot;&amp;cJava&quot;</span>),<span class="number">14</span>,<span class="number">32</span>,&amp;form1,<span class="number">12</span>)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">bt</span><span class="params">(toRaw(<span class="string">&quot;  &amp;f确定  &quot;</span>),<span class="number">16</span>,<span class="number">24</span>,&amp;form1,<span class="number">2</span>,<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		opMale.preserve(); <span class="comment">//维护四个选项框</span></span><br><span class="line">		opFemale.preserve();</span><br><span class="line">		chkCpp.preserve();</span><br><span class="line">		chkJava.preserve();</span><br><span class="line">		bt.enable=(opMale.chosen || opFemale.chosen) &amp;&amp; (chkCpp.chosen || chkJava.chosen); <span class="comment">//如果有选择按钮才启用</span></span><br><span class="line">		<span class="keyword">if</span> (bt.preserve()==<span class="number">2</span>) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	opMale.visible=opFemale.visible=chkCpp.visible=chkJava.visible=bt.visible=<span class="number">0</span>;</span><br><span class="line">	lb.text.text=<span class="string">&quot;&amp;a感谢你做出的选择&quot;</span>;form1.show();form1.print(); <span class="comment">//控件.text.text 表示显示的 RawText 字符串</span></span><br><span class="line">	_getch();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>在需要同时隐藏一个 Form 内的多个控件时，不建议使用 <code>hide()</code>，而是采取修改 <code>visible</code>+手动打印父框架的方法。</li>
+</ul>
+<h4 id="4-5-ProgressBar-示例"><a href="#4-5-ProgressBar-示例" class="headerlink" title="4.5 ProgressBar 示例"></a>4.5 ProgressBar 示例</h4><p>这个程序能够让你大概了解 ProgressBar 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - ProgressBar&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="keyword">int</span> val=<span class="number">0</span>;</span><br><span class="line">	<span class="function">ProgressBar <span class="title">pb</span><span class="params">(toRaw(<span class="string">&quot;&amp;f进度条&quot;</span>),<span class="number">10</span>,<span class="number">10</span>,<span class="number">20</span>,&amp;mainForm,&amp;val,<span class="number">100</span>,<span class="number">12</span>,<span class="number">3</span>)</span></span>; <span class="comment">//进度条长度为 20，颜色为红色（12），风格为 3</span></span><br><span class="line">	<span class="function">Label <span class="title">lb</span><span class="params">(toRaw(<span class="string">&quot;按任意键增加进度条进度...&quot;</span>),<span class="number">8</span>,<span class="number">10</span>,&amp;mainForm)</span></span>;</span><br><span class="line">	<span class="keyword">while</span> (val&lt;<span class="number">100</span>)&#123;</span><br><span class="line">		_getch();val++;pb.print(); <span class="comment">//需要用 print 实时更新进度条状态</span></span><br><span class="line">	&#125;</span><br><span class="line">	_getch();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-6-LabelVal-示例"><a href="#4-6-LabelVal-示例" class="headerlink" title="4.6 LabelVal 示例"></a>4.6 LabelVal 示例</h4><p>这个程序能够让你大概了解 LabelVal 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - LabelVal&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	<span class="function">Form <span class="title">mainForm</span><span class="params">(<span class="number">1</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">90</span>,<span class="literal">nullptr</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="keyword">int</span> val=<span class="number">0</span>,maxVal=<span class="number">10</span>;</span><br><span class="line">	<span class="function">LabelVal <span class="title">lv</span><span class="params">(toRaw(<span class="string">&quot;&amp;f金币数：&quot;</span>),<span class="number">10</span>,<span class="number">10</span>,&amp;mainForm,&amp;val,<span class="number">14</span>,maxVal)</span></span>;</span><br><span class="line">	<span class="function">Label <span class="title">lb</span><span class="params">(toRaw(<span class="string">&quot;按任意键获得金币...&quot;</span>),<span class="number">16</span>,<span class="number">10</span>,&amp;mainForm)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">lvlUp</span><span class="params">(toRaw(<span class="string">&quot;  &amp;f提升容量  &quot;</span>),<span class="number">12</span>,<span class="number">10</span>,&amp;mainForm,<span class="number">2</span>,<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="keyword">int</span> upgradeCost=<span class="number">5</span>; </span><br><span class="line">	<span class="function">LabelVal <span class="title">lvCost</span><span class="params">(toRaw(<span class="string">&quot;&amp;f升级花费：&quot;</span>),<span class="number">12</span>,<span class="number">24</span>,&amp;mainForm,&amp;upgradeCost,<span class="number">10</span>)</span></span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (kbhit())&#123;</span><br><span class="line">			_getch();val=min(val+<span class="number">1</span>,maxVal);lv.print(); <span class="comment">//需要用 print 实时更新状态</span></span><br><span class="line">		&#125;	</span><br><span class="line">		lvlUp.enable=(val&gt;=upgradeCost);</span><br><span class="line">		<span class="keyword">if</span> (lvlUp.preserve()==<span class="number">2</span>)&#123;</span><br><span class="line">			lv.maxVal+=<span class="number">10</span>,maxVal+=<span class="number">10</span>; <span class="comment">//LabelVal::maxVal 不是指针，没有绑定变量</span></span><br><span class="line">			val-=upgradeCost,upgradeCost+=<span class="number">10</span>;</span><br><span class="line">			lv.print();lvCost.print(); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	_getch();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-7-List-示例"><a href="#4-7-List-示例" class="headerlink" title="4.7 List 示例"></a>4.7 List 示例</h4><p>这个程序能够让你大概了解 List 的使用方式。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;console.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	setWindowSize(<span class="string">&quot;Example - List&quot;</span>,<span class="number">90</span>,<span class="number">45</span>);</span><br><span class="line">	hideCursor();</span><br><span class="line">	Form mainForm=Form(<span class="number">1</span>,<span class="number">1</span>,<span class="number">90</span>,<span class="number">45</span>,<span class="literal">nullptr</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">vector</span> &lt;RawText&gt; lt=&#123;toRaw(<span class="string">&quot;&amp;e     添加    &quot;</span>),toRaw(<span class="string">&quot;&amp;c     退出    &quot;</span>)&#125;;</span><br><span class="line">	<span class="function">List <span class="title">list1</span><span class="params">(toRaw(<span class="string">&quot;Test  &quot;</span>),<span class="number">3</span>,<span class="number">6</span>,<span class="number">13</span>,&amp;mainForm,&amp;lt,<span class="number">4</span>)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">pre</span><span class="params">(toRaw(<span class="string">&quot;  &amp;0前一页  &quot;</span>),<span class="number">9</span>,<span class="number">6</span>,&amp;mainForm,<span class="number">10</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">nxt</span><span class="params">(toRaw(<span class="string">&quot;  &amp;0后一页  &quot;</span>),<span class="number">10</span>,<span class="number">6</span>,&amp;mainForm,<span class="number">11</span>,<span class="number">3</span>)</span></span>;</span><br><span class="line">	<span class="function">Button <span class="title">ok</span><span class="params">(toRaw(<span class="string">&quot;   &amp;0确定   &quot;</span>),<span class="number">11</span>,<span class="number">6</span>,&amp;mainForm,<span class="number">14</span>,<span class="number">6</span>)</span></span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">			list1.preserve();</span><br><span class="line">			<span class="keyword">if</span> (pre.preserve()==<span class="number">2</span>) list1.prevPage();</span><br><span class="line">			<span class="keyword">if</span> (nxt.preserve()==<span class="number">2</span>) list1.nextPage();</span><br><span class="line">			<span class="keyword">if</span> (ok.preserve()==<span class="number">2</span>) <span class="keyword">break</span>;</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="keyword">if</span> (list1.isChosen==<span class="number">0</span>) lt.push_back(toRaw(<span class="string">&quot;&amp;d    新项目   &quot;</span>));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (list1.isChosen==<span class="number">1</span>) <span class="keyword">break</span>; </span><br><span class="line">		list1.print();	</span><br><span class="line">	&#125;</span><br><span class="line">	pre.visible=nxt.visible=ok.visible=list1.visible=<span class="number">0</span>;</span><br><span class="line">	mainForm.print(); </span><br><span class="line">	_getch();</span><br><span class="line">	showCursor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>21/01/06 模拟</title>
     <url>/2021/01/06/210106/</url>
     <content><![CDATA[<p>cnt/str/opt</p>
@@ -295,7 +1094,7 @@ Ans=|A\cap B\cap C|=\dfrac{|A\cap B|+|A\cap C|+|B\cap C|-\frac{n(n-1)}2}{2}</scr
     <url>/2020/12/23/english/</url>
     <content><![CDATA[<p>EnglishStudy Beta - 最新版本 v1.0.0</p>
 <a id="more"></a>
-<p><b><font color=green>本项目正在持续更新。</font></b></p>
+<p><b><font color=red>本项目无限期停止更新。</font></b></p>
 <p>EnglishStudy Beta 是一款基于控制台的英语听写辅助软件。</p>
 <p><code>readme.md</code> 文件从此项目起将<strong>不会</strong>涵盖在各版本的目录下。而是在<strong>本文档</strong>更新。</p>
 <p>下载地址：</p>
