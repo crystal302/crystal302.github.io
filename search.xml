@@ -560,7 +560,7 @@
 </div>
 <p>*OBJECT_TYPE</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">OBJECT_TYPE</span>&#123;</span></span><br><span class="line">	OBJECT,FORM,BUTTON,LABEL,OPTION,CHECKBOX,PROGRESS_BAR,LABEL_VAL,LIST</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><em>注意：所有控件的 xpos/ypos 为关于它父对象的<em>*相对坐标</em></em>。</p>
+<p>*注意：所有控件的 xpos/ypos 为关于它父对象的相对坐标。</p>
 <p><strong>通用成员函数：</strong></p>
 <p>构造函数：<code>Object()</code></p>
 <div class="table-container">
