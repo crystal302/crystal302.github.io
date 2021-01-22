@@ -525,7 +525,10 @@ function intToChinese ( str ) {
 		var todayYear = today.getFullYear();
 		var todayMonth = today.getMonth()+1;
 		var todayDate = today.getDate();
-		document.getElementById("sitetime").innerHTML=" 庆丰"+intToChinese(todayYear-2012)+"年"+intToChinese(todayMonth)+"月"+intToChinese(todayDate)+"日 ";
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		document.getElementById("sitetime").innerHTML="庆丰"+intToChinese(todayYear-2012)+"年"+intToChinese(todayMonth)+"月"+intToChinese(todayDate)+"日  "+todayHour+" 时 "+todayMinute+" 分 "+todaySecond+" 秒";
 	}
 	siteTime();
 </script>
