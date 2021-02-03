@@ -174,6 +174,26 @@
       </tags>
   </entry>
   <entry>
+    <title>代码融合器</title>
+    <url>/2021/02/03/merging/</url>
+    <content><![CDATA[<p>代码融合器 - 最新版本 v1.0.0</p>
+<a id="more"></a>
+<p><b><font color=green>本项目已经基本更新完毕。</font></b></p>
+<p>代码融合器是用于将多份混淆代码以注释的形式融入源代码的工具。</p>
+<p>下载地址：</p>
+<p>v1.0.0 <a href="https://zombie462.github.io/items/merging.zip">点击下载</a></p>
+<h4 id="操作说明"><a href="#操作说明" class="headerlink" title="操作说明"></a>操作说明</h4><p>按照程序中的指示进行操作即可。</p>
+<p>本项目基于 ConsoleUI 5，涵盖部分鼠标操作方法，所以请<strong>关闭快速编辑模式</strong>。此外，部分系统可能会有对焦不准确的现象，暂时无法解决。</p>
+<p>此外，由于 ConsoleUI 5 的输入框不支持输入中文等字符，请保证文件的<strong>相对</strong>路径中不含中文或其它特殊字符。</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>21/01/30 模拟</title>
     <url>/2021/01/30/210130/</url>
     <content><![CDATA[<p>普通的 IOI 题/普通的图论题/普通的计数题</p>
