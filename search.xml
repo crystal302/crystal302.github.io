@@ -174,6 +174,24 @@
       </tags>
   </entry>
   <entry>
+    <title>音乐列表</title>
+    <url>/2020/12/12/music_list/</url>
+    <content><![CDATA[<p>正常向歌曲列表</p>
+<a id="more"></a>
+<p>神的随波逐流（yousa）</p>
+<audio controls>
+  <source src="https://crystal203.github.io/music/music1.mp3" type="audio/mp3">
+</audio>
+
+]]></content>
+      <categories>
+        <category>音频</category>
+      </categories>
+      <tags>
+        <tag>音频</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>21/03/17 模拟</title>
     <url>/2021/03/17/210317/</url>
     <content><![CDATA[<p>party/xortwo/paint</p>
@@ -1626,21 +1644,6 @@ Ans=|A\cap B\cap C|=\dfrac{|A\cap B|+|A\cap C|+|B\cap C|-\frac{n(n-1)}2}{2}</scr
       </categories>
       <tags>
         <tag>项目</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>音乐列表</title>
-    <url>/2020/12/12/music_list/</url>
-    <content><![CDATA[<p>神的随波逐流（yousa）</p>
-<audio controls>
-  <source src="https://cdn.jsdelivr.net/gh/zombie462/zombie462.github.io/items/music1.mp3" type="audio/mp3">
-</audio>
-]]></content>
-      <categories>
-        <category>音频</category>
-      </categories>
-      <tags>
-        <tag>音频</tag>
       </tags>
   </entry>
   <entry>
