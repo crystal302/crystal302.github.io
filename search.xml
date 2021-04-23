@@ -183,7 +183,10 @@
   <source src="https://crystal203.github.io/music/music1.mp3" type="audio/mp3">
 </audio>
 
-]]></content>
+<p>国际歌</p>
+<audio controls>
+  <source src="https://crystal203.github.io/music/music2.mp3" type="audio/mp3">
+</audio>]]></content>
       <categories>
         <category>音频</category>
       </categories>
